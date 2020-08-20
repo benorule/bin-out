@@ -106,8 +106,6 @@ Has following database schema containing three tables:
 ## VideoLink
 <a href= "">Click here for demo video link</a>
 
-## Credits
-
 * [Ben Turnbull](http://www.github.com/benorule)
 * [Chris Roschi](http://www.github.com/CR-53)
 * [Pradeep Marasini](http://www.github.com/marasinipradeep)
