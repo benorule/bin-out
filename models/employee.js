@@ -1,6 +1,11 @@
 // Creating our employee model
 module.exports = function(sequelize, DataTypes) {
   const Employee = sequelize.define("Employee", {
+    id: {
+      type: DataTypes.INTEGER,
+      autoIncrement: true,
+      primaryKey: true
+    },
     fullName: {
       type: DataTypes.STRING,
       notEmpty: true
@@ -41,18 +46,20 @@ module.exports = function(sequelize, DataTypes) {
     requestCompleted: {
       type: DataTypes.BOOLEAN,
       default: false
-    },
-    employeeCustomerId: {
-      //add foreign key
-      type: DataTypes.INTEGER,
-      notNull: true
-    },
-    employeeAdminId: {
-      //add foreign key
-      type: DataTypes.INTEGER,
-      notNull: true
     }
   });
+
+  Employee.associate = function(models) {
+    Employee.hasMany(models.BinRequest, {
+      onDelete: "cascade"
+    });
+
+    Employee.belongsTo(models.Admin, {
+      foreignKey: {
+        allowNull: false
+      }
+    });
+  };
 
   return Employee;
 };
