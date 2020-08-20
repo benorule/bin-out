@@ -3,6 +3,11 @@
 // Creating our User model
 module.exports = function(sequelize, DataTypes) {
   const User = sequelize.define("User", {
+    id: {
+      type: DataTypes.INTEGER,
+      autoIncrement: true,
+      primaryKey: true
+    },
     fullName: {
       type: DataTypes.STRING,
       notEmpty: true
@@ -36,19 +41,19 @@ module.exports = function(sequelize, DataTypes) {
       //??
       notNull: true,
       default: false
-    },
-    customerId: {
-      type: DataTypes.INTEGER,
-      notNull: true
     }
   });
 
-  // User.associate = function(models) {
-  //   User.belongsTo(models.XXX, {
-  //     foreignKey: {
-  //       allowNull: false
-  //     }
-  //   });
-  //};
+  User.associate = function(models) {
+    User.hasMany(models.BinRequest, {
+      onDelete: "cascade"
+    });
+
+    User.belongsTo(models.Admin, {
+      foreignKey: {
+        allowNull: false
+      }
+    });
+  };
   return User;
 };
