@@ -1,6 +1,11 @@
 // Creating our Admin model
 module.exports = function(sequelize, DataTypes) {
-  const User = sequelize.define("Admin", {
+  const Admin = sequelize.define("Admin", {
+    id: {
+      type: DataTypes.INTEGER,
+      autoIncrement: true,
+      primaryKey: true
+    },
     fullName: {
       type: DataTypes.STRING,
       notEmpty: true
@@ -22,6 +27,14 @@ module.exports = function(sequelize, DataTypes) {
       notEmpty: true
     }
   });
+  Admin.associate = function(models) {
+    Admin.hasMany(models.User, {
+      //onDelete:"cascade"
+    });
+    Admin.hasMany(models.Employee, {
+      //onDelete:"cascade"
+    });
+  };
 
-  return User;
+  return Admin;
 };
