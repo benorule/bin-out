@@ -6,7 +6,6 @@ $(document).ready(() => {
   const password = $("input#password");
   const address = $("input#address");
   const postcode = $("input#postcode");
-  const proofOfId = $("input#proofOfId");
 
   // When the signup button is clicked, we validate the email and password are not blank
   signUpForm.on("submit", event => {
@@ -16,33 +15,32 @@ $(document).ready(() => {
       email: email.val().trim(),
       password: password.val().trim(),
       address: address.val().trim(),
-      postcode: postcode.val().trim(),
-      proofOfId: proofOfId.val().trim()
+      postcode: postcode.val().trim()
     };
 
-    if (!userData.fullName || !userData.email || !userData.password || !userData.address || !userData.postcode || !userData.proofOfId) {
+    if (!userData.fullName || !userData.email || !userData.password || !userData.address || !userData.postcode) {
       return;
     }
     // If we have an email and password, run the signUpUser function
-    signUpUser(userData.fullName, userData.email, userData.address, userData.postcode, userData.proofOfId);
+    signUpEmployee(userData.fullName, userData.email, userData.password, userData.address, userData.postcode);
     fullName.val("");
     email.val("");
     password.val("");
     address.val("");
     postcode.val("");
-    proofOfId.val("");
   });
 
   // Does a post to the signup route. If successful, we are redirected to the members page
   // Otherwise we log any errors
-  function signUpUser(email, password) {
-    $.post("/api/signup", {
-      fullName: fullName,
+  function signUpEmployee(fullname,email,password,address,postcode) {
+    console.log("inside signupemployee")
+    $.post("/api/employee/signup", {
+      fullName: fullname,
       email: email,
       password: password,
       address: address,
       postcode: postcode,
-      proofOfId: proofOfId
+     
     })
       .then(() => {
         window.location.replace("/members");

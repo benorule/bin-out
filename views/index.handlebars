@@ -1,0 +1,119 @@
+<div class="wrapper">
+    <!-- Sidebar Holder -->
+    <nav id="sidebar">
+      <div class="sidebar-header">
+        <h3>Bin-Out Admin</h3>
+      </div>
+
+      <ul class="list-unstyled components">
+        <p>Logged in as:<span id="loggedInUser"></span></p>
+        <li class="active">
+        <li>
+          <a id="homeBtn" href="#">Home</a>
+        </li>
+        <li>
+          <a id="viewUsersBtn" href="#">View Users</a>
+        </li>
+        <li>
+          <a id="viewEmployeesBtn" href="#">View Employees</a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Page Content Holder -->
+    <div id="content">
+
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+
+          <button type="button" id="sidebarCollapse" class="navbar-btn">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+          <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <i class="fas fa-align-justify"></i>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="nav navbar-nav ml-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="#">Logout</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+      <h2>User Table</h2>
+     
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      
+      <th scope="col">#</th>
+ 
+      <th scope="col">Name</th>
+
+      <th scope="col">Unit Number</th>
+      <th scope="col">House Number</th>
+      <th scope="col">Streetname</th>
+      <th scope="col">Postcode</th>
+      <th scope="col">Approve Signup</th>
+      <th scope="col">Delete Signup</th>
+     
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      
+      <td>1</td>
+      {{#each this}}
+      <td>{{fullName}}</td>
+      <td>{{unitNumber}}</td>
+      <td>{{houseNumber}}</td>
+      <td>{{streetName}}</td>
+      <td>{{postcode}}</td>
+      {{/each}} 
+      <td><a class="btn btn-primary" href="#" role="button" id="acceptUser">Accept</a></td>
+      <td><a class="btn btn-primary" href="#" role="button" id="deleteUser">Delete</a></td>
+   
+    </tr>
+  </tbody>
+</table>
+
+
+      <h2>Employee Table</h2>
+     
+<table class="table employeeTable">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Address</th>
+            <th scope="col">Postcode</th>
+            <th scope="col">Approve Signup</th>
+            <th scope="col">Delete Signup</th>
+        </tr>
+    </thead>
+    <tbody>
+       
+        <tr>
+          
+            <td scope="col">1</td>
+             {{#each this}}
+            <td scope="col">{{employeefullName}}</td>
+            <td scope="col">{{email}}</td>
+            <td scope="col">{{address}}</td>
+            <td scope="col">{{employeepostcode}}</td>
+             {{/each}} 
+            <td><a class="btn btn-primary" href="#" role="button" id="acceptEmployee">Accept</a></td>
+            <td><a class="btn btn-primary" href="#" role="button" id="deleteEmployee">Delete</a></td>
+       
+        </tr>
+       
+    </tbody>
+</table>
