@@ -1,13 +1,11 @@
 {
-  "name": "1-Passport-Example",
+  "name": "bin",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "npm run lint",
+    "test": "npm run",
     "start": "node server.js",
-    "lint": "eslint --quiet .",
-    "fix": "eslint --fix .",
     "watch": "nodemon server.js"
   },
   "keywords": [],
@@ -27,9 +25,6 @@
     "chai": "^4.1.2",
     "chai-http": "^4.0.0",
     "cross-env": "^5.2.0",
-    "eslint": "^4.19.1",
-    "eslint-config-prettier": "^2.9.0",
-    "eslint-plugin-prettier": "^2.6.2",
     "mocha": "^5.2.0",
     "prettier": "^1.13.7"
   }
