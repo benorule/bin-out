@@ -35,6 +35,7 @@ $(document).ready(() => {
   function signUpEmployee(fullname,email,password,address,postcode) {
     console.log("inside signupemployee")
     $.post("/api/employee/signup", {
+      employeeid:Date.now(),
       fullName: fullname,
       email: email,
       password: password,

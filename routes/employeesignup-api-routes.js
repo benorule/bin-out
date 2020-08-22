@@ -10,6 +10,7 @@ module.exports = function (app) {
   
     app.post("/api/employee/signup", (req, res) => {
         var hbsObj = {
+         employeeid:req.body.employeeid,
          employeefullName : req.body.fullName,
          email : req.body.email,
          address : req.body.address,

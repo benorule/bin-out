@@ -37,6 +37,7 @@ $(document).ready(() => {
   function signUpUser(fullName,unitNumber, houseNumber,streetName,postcode) {
     console.log("inside signup user")
     $.post("/api/user/signup", {
+      userid:Date.now(),
       fullName:fullName,
       unitNumber: unitNumber,
       houseNumber: houseNumber,
