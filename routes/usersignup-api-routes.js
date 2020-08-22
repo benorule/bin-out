@@ -9,6 +9,7 @@ var newhbsObj = JSON.parse(fs.readFileSync(path.join(__dirname, "../db/db.json")
 module.exports = function (app) {
   app.post("/api/user/signup", (req, res) => {
 var hbsObj={
+    userid:req.body.userid,
     fullName : req.body.fullName,
     unitNumber : parseInt(req.body.unitNumber),
     houseNumber : parseInt(req.body.houseNumber),

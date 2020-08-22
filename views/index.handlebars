@@ -53,7 +53,7 @@
   <thead class="thead-dark">
     <tr>
       
-      <th scope="col">#</th>
+      <th scope="col">User ID</th>
  
       <th scope="col">Name</th>
 
@@ -66,22 +66,31 @@
      
     </tr>
   </thead>
+  
   <tbody>
     <tr>
-      
-      <td>1</td>
-      {{#each this}}
+     
+       {{#each this}}
+      <td>{{userid}}</td>
+       
       <td>{{fullName}}</td>
+    
       <td>{{unitNumber}}</td>
+       
       <td>{{houseNumber}}</td>
+      
       <td>{{streetName}}</td>
+       
       <td>{{postcode}}</td>
-      {{/each}} 
+      {{/each}}
+   
       <td><a class="btn btn-primary" href="#" role="button" id="acceptUser">Accept</a></td>
       <td><a class="btn btn-primary" href="#" role="button" id="deleteUser">Delete</a></td>
-   
+    
     </tr>
+   
   </tbody>
+  
 </table>
 
 
@@ -90,7 +99,7 @@
 <table class="table employeeTable">
     <thead class="thead-dark">
         <tr>
-            <th scope="col">#</th>
+            <th scope="col">Employee ID</th>
             <th scope="col">Name</th>
             <th scope="col">Email</th>
             <th scope="col">Address</th>
@@ -102,14 +111,15 @@
     <tbody>
        
         <tr>
-          
-            <td scope="col">1</td>
-             {{#each this}}
+          {{#each this}}
+            <td scope="col">{{employeeid}}</td>
+             
             <td scope="col">{{employeefullName}}</td>
+             
             <td scope="col">{{email}}</td>
             <td scope="col">{{address}}</td>
             <td scope="col">{{employeepostcode}}</td>
-             {{/each}} 
+             {{/each}}
             <td><a class="btn btn-primary" href="#" role="button" id="acceptEmployee">Accept</a></td>
             <td><a class="btn btn-primary" href="#" role="button" id="deleteEmployee">Delete</a></td>
        
