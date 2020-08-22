@@ -18,44 +18,47 @@ $(document).ready(() => {
         });
     })
 
-    $("#deleteUser").on("click", function () {
-
+    $(".deleteUser").on("click", function () {
+        event.preventDefault()
         console.log("On delete user clicked")
 
-        $.ajax({
-            url: '/api/delete/userrequest',
-            type: 'DELETE',
-            success: function (result) {
-                // Do something with the result
-            }
-        });
+       let id= $(this).data("id")
+       console.log(id)
+       $.ajax({
+        method: "DELETE",
+        url: "/api/user/delete/" + id
+      }).then(()=>{
+           location.reload();
+        })
     })
 
 
-    $("#acceptEmployee").on("click", function () {
+    $(".acceptEmployee").on("click", function () {
+        event.preventDefault()
+        console.log("On Update Employee clicked")
 
-        console.log("On accept employee clicked")
-
-        $.ajax({
-            url: '/api/insert/employeerequest',
-            type: 'POST',
-            success: function (result) {
-                // Do something with the result
-            }
-        });
+       let id= $(this).data("id")
+       console.log(id)
+       $.ajax({
+        method: "PUT",
+        url: "/api/employee/update/" + id
+      }).then(()=>{
+           location.redirect("admin/employees");
+        })
     })
 
-    $("#deleteEmployee").on("click", function () {
+    $(".deleteEmployee").on("click", function () {
+        event.preventDefault()
+        console.log("On delete Employee clicked")
 
-        console.log("On delete employee clicked")
-
-        $.ajax({
-            url: '/api/delete/employeerequest',
-            type: 'DELETE',
-            success: function (result) {
-                // Do something with the result
-            }
-        });
+       let id= $(this).data("id")
+       console.log(id)
+       $.ajax({
+        method: "DELETE",
+        url: "/api/employee/delete/" + id
+      }).then(()=>{
+           location.redirect("admin/employees");
+        })
     })
 
 

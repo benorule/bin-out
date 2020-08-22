@@ -14,17 +14,16 @@
       </thead>
       <tbody>
 
-        {{#each employees}}
+        {{#each employee}}
         <tr>
-          <td scope="col">{{employeeid}}</td>
-          <td scope="col">{{employeefullName}}</td>
-          <td scope="col">{{email}}</td>
-          <td scope="col">{{address}}</td>
-          <td scope="col">{{employeepostcode}}</td>
-          <td><a class="btn btn-primary" href="#" role="button" id="acceptEmployee">Accept</a></td>
-          <td><a class="btn btn-primary" href="#" role="button" id="deleteEmployee">Delete</a></td>
+          <td scope="col">{{dataValues.id}}</td>
+          <td scope="col">{{dataValues.fullName}}</td>
+          <td scope="col">{{dataValues.email}}</td>
+          <td scope="col">{{dataValues.address}}</td>
+          <td scope="col">{{dataValues.postcode}}</td>
+          <td><a class="btn btn-primary acceptEmployee" href="/admin/employees" role="button" data-id="{{dataValues.id}}">Accept</a></td>
+          <td><a class="btn btn-primary deleteEmployee" href="/admin/employees" role="button" data-id="{{dataValues.id}}">Delete</a></td>
         </tr>
         {{/each}}
-
       </tbody>
     </table>
