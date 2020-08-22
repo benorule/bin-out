@@ -1,43 +1,19 @@
 // Requiring our models and passport as we've configured it
 const db = require("../models");
-const fs = require("fs")
-const path = require("path")
-
-
-// var newhbsObj = JSON.parse(fs.readFileSync(path.join(__dirname, "../db/db.json"), "utf-8"))
 
 module.exports = function (app) {
-  
-    app.post("/api/employee/signup", (req, res) => {
-        var hbsObj = {
-         employeeid:req.body.employeeid,
-         employeefullName : req.body.fullName,
-         email : req.body.email,
-         address : req.body.address,
-         employeepostcode : parseInt(req.body.postcode)
-        }
-       // fs.appendFileSync("./db/db.json", JSON.stringify(hbsObj))
-       let oldData =JSON.parse(fs.readFileSync(path.join(__dirname,"../db/db.json"),"utf-8")) 
-       oldData.push(hbsObj)
-       fs.writeFileSync("./db/db.json", JSON.stringify(oldData))
-    
-      });
-
-
-  app.post("/api/insert/employeerequest", (req, res) => {
-    console.log("inside insert employee request")
+  app.post("/api/employee/signup", (req, res) => {
+    console.log(req.body)
    
-    console.log(newhbsObj[2].employeefullName)
-      console.log(newhbsObj[2].employeefullName)
-      db.Employee.create({
-      fullName: newhbsObj[2].employeefullName,
-      email: newhbsObj[2].email,
-      password:"apple",
-      address: newhbsObj[2].address,
-      postcode: newhbsObj[2].employeepostcode
-      
-    
-    }).then(() => {})
+    const employeeData={
+      fullName: req.body.fullName,
+      email: req.body.email,
+      password:req.body.password,
+      address: req.body.address,
+      postcode: parseInt(req.body.postcode)
+
+    };
+      db.Employee.create(employeeData).then((result) => {})
       .catch(err => {
         res.status(401).json(err);
       });
@@ -45,10 +21,35 @@ module.exports = function (app) {
 
   });
 
-  app.delete("/api/delete/userrequest", (req, res) => {
-    console.log("inside delete request")
-  });
 
+  // PUT route for updating Employee
+  app.put("/api/employee/update/:id", function(req, res) {
+    // Add code here to update a post using the values in req.body, where the id is equal to
+    // req.body.id and return the result to the user using res.json
+    db.Post.update({
+     
+    },{
+      where:{
+        id:req.body.id
+      }
+    }).then(function(result){
+      res.json(result)
+    })
+  })
+
+  app.delete("/api/employee/delete/:id", (req, res) => {
+    console.log("inside employee delete request");
+
+    console.log(req.params.id)
+    db.Employee.destroy({
+      where:{
+        id:req.params.id
+      }
+    }).then(function(results){
+     
+    })
+    
+  });
 };
 
 

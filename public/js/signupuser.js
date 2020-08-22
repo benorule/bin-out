@@ -13,33 +13,30 @@ $(document).ready(() => {
     console.log("on signUP clicked")
     const userData = {
       fullName: fullName.val().trim(),
-      unitNumber: parseInt(unitNumber.val().trim()),
-      houseNumber: parseInt(houseNumber.val().trim()),
+      unitNumber: unitNumber.val().trim(),
+      houseNumber: houseNumber.val().trim(),
       streetName: streetName.val().trim(),
-      postcode: parseInt(postcode.val().trim())
+      postcode: postcode.val().trim()
     };
-    console.log(userData)
-
+  
     if (!userData.houseNumber || !userData.streetName || !userData.postcode) {
       return;
     }
    // If we have an email and password, run the signUpUser function
    signUpUser(userData);
-    fullName.val("");
-    unitNumber.val("");
-    houseNumber.val("");
-    streetName.val("");
-    postcode.val("")
+   //Clear all the populated data
+   clearAll()
+    
   });
 
   // Does a post to the signup route. If successful, we are redirected to the user login page
   // Otherwise we log any errors
   function signUpUser(userData) {
     // $.post("/api/user/signup", {
-    $.post("/api/insert/userrequest", userData)
+    $.post("/api/user/signup", userData)
       .then(() => {
         console.log("after .then")
-         window.location.replace("/userdashboard");
+         window.location.replace("/user/signup");
         // If there's an error, handle it by throwing up a bootstrap alert
       })
       .catch(handleLoginErr);
@@ -48,5 +45,14 @@ $(document).ready(() => {
   function handleLoginErr(err) {
     $("#alert .msg").text(err.responseJSON);
     $("#alert").fadeIn(500);
+  }
+
+  function clearAll(){
+    fullName.val("");
+    unitNumber.val("");
+    houseNumber.val("");
+    streetName.val("");
+    postcode.val("")
+
   }
 });

@@ -6,39 +6,58 @@ const db = require("../models");
 const isAuthenticated = require("../config/middleware/isAuthenticated");
 
 module.exports = function (app) {
-  app.get("/", (req, res) => {
+
+  //Routes for signing up user information
+  app.get("/user/signup", (req, res) => {
     // If the user already has an account send them to the members page
     if (req.user) {
-      res.redirect("/userdashboard");
+      res.redirect("/user/dashboard");
     }
     res.sendFile(path.join(__dirname, "../public/signupuser.html"));
   });
 
-  app.get("/employee", (req, res) => {
+  //Routes for signing up employees
+  app.get("/employee/signup", (req, res) => {
 
     res.sendFile(path.join(__dirname, "../public/signupemployee.html"));
   });
 
-  app.get("/userdashboard", (req, res) => {
+
+  //Routes for user dashboard after signup
+  app.get("/user/dashboard", (req, res) => {
 
     res.sendFile(path.join(__dirname, "../public/userdashboard.html"));
   });
 
+  //Routes for admin dashboard which will populate users table initially
   app.get("/admin/dashboard", (req, res) => {
     res.redirect("/admin/users");
   });
 
+  //Routes to find all the users from database which will populate on the users table
   app.get("/admin/users", (req, res) => {
     db.User.findAll().then(function (result) {
-      var newResult = {
+
+        //Creating user objects to pass to handlebars
+      let newUser = {
         user: result
       }
-      res.render("users", newResult);
+      res.render("users", newUser);
     })
   });
 
+
+  //Routes for getting all the employees from the database and populates on employee table
   app.get("/admin/employees", (req, res) => {
-    res.render("employees");
+    db.Employee.findAll().then(function (result) {
+
+      //Creating employee objects to pass to handlebars
+      let newEmployee = {
+        employee: result
+      }
+      res.render("employees", newEmployee);
+    })
+   
   });
 
 };

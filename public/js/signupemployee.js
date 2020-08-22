@@ -10,7 +10,7 @@ $(document).ready(() => {
   // When the signup button is clicked, we validate the email and password are not blank
   signUpForm.on("submit", event => {
     event.preventDefault();
-    const userData = {
+    const employeeData = {
       fullName: fullName.val().trim(),
       email: email.val().trim(),
       password: password.val().trim(),
@@ -18,33 +18,22 @@ $(document).ready(() => {
       postcode: postcode.val().trim()
     };
 
-    if (!userData.fullName || !userData.email || !userData.password || !userData.address || !userData.postcode) {
+    if (!employeeData.fullName || !employeeData.email || !employeeData.password || !employeeData.address || !employeeData.postcode) {
       return;
     }
-    // If we have an email and password, run the signUpUser function
-    signUpEmployee(userData.fullName, userData.email, userData.password, userData.address, userData.postcode);
-    fullName.val("");
-    email.val("");
-    password.val("");
-    address.val("");
-    postcode.val("");
+    // If we have an required data, run the signUpEmployee function
+    signUpEmployee(employeeData);
+    clearAll()
+   
   });
 
-  // Does a post to the signup route. If successful, we are redirected to the members page
+  // Does a post to the signUpEmployee route. If successful, we are redirected to the signUpEmployee page
   // Otherwise we log any errors
-  function signUpEmployee(fullname,email,password,address,postcode) {
+  function signUpEmployee(employeeData) {
     console.log("inside signupemployee")
-    $.post("/api/employee/signup", {
-      employeeid:Date.now(),
-      fullName: fullname,
-      email: email,
-      password: password,
-      address: address,
-      postcode: postcode,
-     
-    })
+    $.post("/api/employee/signup",employeeData)
       .then(() => {
-        window.location.replace("/members");
+        window.location.replace("/employee/signup");
         // If there's an error, handle it by throwing up a bootstrap alert
       })
       .catch(handleLoginErr);
@@ -53,5 +42,13 @@ $(document).ready(() => {
   function handleLoginErr(err) {
     $("#alert .msg").text(err.responseJSON);
     $("#alert").fadeIn(500);
+  }
+
+  function clearAll(){
+    fullName.val("");
+    email.val("");
+    password.val("");
+    address.val("");
+    postcode.val("");
   }
 });
