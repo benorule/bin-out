@@ -1,2 +1,44 @@
-[{"userid":"1598010515221","fullName":"Pradeep","unitNumber":5,"houseNumber":25,"streetName":"William St, Norwood SA 5067","postcode":5067},
-    {"employeeid":"1598010866948","employeefullName":"apekchya","email":"marasinipradeep@gmail.com","address":"2/25 William St, Norwood SA 5067","employeepostcode":5067}]
+{
+    "users": [
+        {
+            "userid": "1598010515221",
+            "fullName": "Pradeep",
+            "unitNumber": 5,
+            "houseNumber": 25,
+            "streetName": "William St, Norwood SA 5067",
+            "postcode": 5067
+        },
+        {
+            "userid": "1598010513331",
+            "fullName": "TestUser",
+            "unitNumber": 8,
+            "houseNumber": 33,
+            "streetName": "Hutt St, Adelaide SA 5000",
+            "postcode": 5000
+        },
+        {
+            "userid": "1598059791299",
+            "fullName": "TestEmployee3",
+            "unitNumber": 3,
+            "houseNumber": 300,
+            "streetName": "Testing St",
+            "postcode": 7089
+        }
+    ],
+    "employees": [
+        {
+            "employeeid": "1598010866948",
+            "employeefullName": "apekchya",
+            "email": "marasinipradeep@gmail.com",
+            "address": "2/25 William St, Norwood SA 5067",
+            "employeepostcode": 5067
+        },
+        {
+            "employeeid": "1598330866948",
+            "employeefullName": "TestEmployee",
+            "email": "test@gmail.com",
+            "address": "1a/38 William St, Norwood SA 5067",
+            "employeepostcode": 5067
+        }
+    ]
+}

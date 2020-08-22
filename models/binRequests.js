@@ -1,11 +1,14 @@
 // Creating our Admin model
 module.exports = function(sequelize, DataTypes) {
   const BinRequest = sequelize.define("BinRequest", {
-    id: {
-      type: DataTypes.INTEGER,
-      autoIncrement: true,
-      primaryKey: true
-    }
+    date: {
+      type: DataTypes.DATE,
+      allowNull: true
+    },
+    completed: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false
+    },
   });
   BinRequest.associate = function(models) {
     BinRequest.belongsTo(models.User, {
@@ -15,7 +18,7 @@ module.exports = function(sequelize, DataTypes) {
     });
     BinRequest.belongsTo(models.Employee, {
       foreignKey: {
-        allowNull: false
+        allowNull: true
       }
     });
   };

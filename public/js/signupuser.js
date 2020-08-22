@@ -13,10 +13,10 @@ $(document).ready(() => {
     console.log("on signUP clicked")
     const userData = {
       fullName: fullName.val().trim(),
-      unitNumber: unitNumber.val().trim(),
-      houseNumber: houseNumber.val().trim(),
+      unitNumber: parseInt(unitNumber.val().trim()),
+      houseNumber: parseInt(houseNumber.val().trim()),
       streetName: streetName.val().trim(),
-      postcode: postcode.val().trim()
+      postcode: parseInt(postcode.val().trim())
     };
     console.log(userData)
 
@@ -24,8 +24,8 @@ $(document).ready(() => {
       return;
     }
    // If we have an email and password, run the signUpUser function
-   signUpUser(userData.fullName, userData.unitNumber, userData.houseNumber, userData.streetName, userData.postcode);
-   fullName.val("");
+   signUpUser(userData);
+    fullName.val("");
     unitNumber.val("");
     houseNumber.val("");
     streetName.val("");
@@ -34,16 +34,9 @@ $(document).ready(() => {
 
   // Does a post to the signup route. If successful, we are redirected to the user login page
   // Otherwise we log any errors
-  function signUpUser(fullName,unitNumber, houseNumber,streetName,postcode) {
-    console.log("inside signup user")
-    $.post("/api/user/signup", {
-      userid:Date.now(),
-      fullName:fullName,
-      unitNumber: unitNumber,
-      houseNumber: houseNumber,
-      streetName: streetName,
-      postcode: postcode,
-    })
+  function signUpUser(userData) {
+    // $.post("/api/user/signup", {
+    $.post("/api/insert/userrequest", userData)
       .then(() => {
         console.log("after .then")
          window.location.replace("/userdashboard");

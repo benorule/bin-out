@@ -3,44 +3,30 @@
 // Creating our User model
 module.exports = function(sequelize, DataTypes) {
   const User = sequelize.define("User", {
-    id: {
-      type: DataTypes.INTEGER,
-      autoIncrement: true,
-      primaryKey: true
-    },
     fullName: {
       type: DataTypes.STRING,
-      notEmpty: true
+      allowNull: false
     },
     unitNumber: {
       type: DataTypes.INTEGER,
-      notNull: true
+      allowNull: true
     },
     houseNumber: {
       type: DataTypes.INTEGER,
-      notNull: true
+      allowNull: false
     },
     streetName: {
       type: DataTypes.STRING,
-      notEmpty: true
+      allowNull: false
     },
     postcode: {
       type: DataTypes.INTEGER,
-      notNull: true
+      allowNull: false
     },
-    proofOfAddress: {
-      type: DataTypes.STRING,
-      notEmpty: true
-    },
-    uniqueCustomerId: {
-      type: DataTypes.INTEGER,
-      notNull: true
-    },
-    request: {
-      type: DataTypes.STRING,
-      //??
-      notNull: true,
-      default: false
+    approvedUser: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: false
     }
   });
 
@@ -49,11 +35,12 @@ module.exports = function(sequelize, DataTypes) {
       onDelete: "cascade"
     });
 
-    User.belongsTo(models.Admin, {
-      foreignKey: {
-        allowNull: false
-      }
-    });
+    // User.belongsTo(models.Admin, {
+    //   foreignKey: {
+    //     allowNull: true,
+    //     defaultValue: 0
+    //   }
+    // });
   };
   return User;
 };
