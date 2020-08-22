@@ -1,0 +1,30 @@
+<h2>Employee Table</h2>
+
+    <table class="table employeeTable">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Employee ID</th>
+          <th scope="col">Name</th>
+          <th scope="col">Email</th>
+          <th scope="col">Address</th>
+          <th scope="col">Postcode</th>
+          <th scope="col">Approve Signup</th>
+          <th scope="col">Delete Signup</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        {{#each employees}}
+        <tr>
+          <td scope="col">{{employeeid}}</td>
+          <td scope="col">{{employeefullName}}</td>
+          <td scope="col">{{email}}</td>
+          <td scope="col">{{address}}</td>
+          <td scope="col">{{employeepostcode}}</td>
+          <td><a class="btn btn-primary" href="#" role="button" id="acceptEmployee">Accept</a></td>
+          <td><a class="btn btn-primary" href="#" role="button" id="deleteEmployee">Delete</a></td>
+        </tr>
+        {{/each}}
+
+      </tbody>
+    </table>

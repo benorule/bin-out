@@ -4,7 +4,7 @@ const fs = require("fs")
 const path = require("path")
 
 
-var newhbsObj = JSON.parse(fs.readFileSync(path.join(__dirname, "../db/db.json"), "utf-8"))
+// var newhbsObj = JSON.parse(fs.readFileSync(path.join(__dirname, "../db/db.json"), "utf-8"))
 
 module.exports = function (app) {
   
@@ -37,12 +37,8 @@ module.exports = function (app) {
       postcode: newhbsObj[2].employeepostcode
       
     
-    }).then(() => {
-      console.log("line 36")
-      res.redirect("/adminDashboard");
-    })
+    }).then(() => {})
       .catch(err => {
-        console.log("line 49")
         res.status(401).json(err);
       });
     

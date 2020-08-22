@@ -1,0 +1,35 @@
+ <h2>User Table</h2>
+
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+
+          <th scope="col">User ID</th>
+          <th scope="col">Name</th>
+          <th scope="col">Unit Number</th>
+          <th scope="col">House Number</th>
+          <th scope="col">Streetname</th>
+          <th scope="col">Postcode</th>
+          <th scope="col">Approve Signup</th>
+          <th scope="col">Delete Signup</th>
+
+        </tr>
+      </thead>
+
+      <tbody>
+        {{#each user}}
+        <tr>
+          <td>{{dataValues.id}}</td>
+          <td>{{dataValues.fullName}}</td>
+          <td>{{dataValues.unitNumber}}</td>
+          <td>{{dataValues.houseNumber}}</td>
+          <td>{{dataValues.streetName}}</td>
+          <td>{{dataValues.postcode}}</td>
+
+          <td><a class="btn btn-primary acceptUser" href="#" role="button" data-id="{{dataValues.id}}">Accept</a></td>
+          <td><a class="btn btn-primary deleteUser" href="#" role="button" data-id="{{dataValues.id}}">Delete</a></td>
+
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
