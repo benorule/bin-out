@@ -7,6 +7,11 @@ const isAuthenticated = require("../config/middleware/isAuthenticated");
 
 module.exports = function (app) {
 
+   //Routes for index page up user information
+   app.get("/", (req, res) => {
+    res.sendFile(path.join(__dirname, "../public/index.html"));
+  });
+
   //Routes for signing up user information
   app.get("/user/signup", (req, res) => {
     // If the user already has an account send them to the members page
@@ -20,6 +25,23 @@ module.exports = function (app) {
   app.get("/employee/signup", (req, res) => {
 
     res.sendFile(path.join(__dirname, "../public/signupemployee.html"));
+  });
+
+  //Routes for employees login page
+  app.get("/employee/login", (req, res) => {
+
+    res.sendFile(path.join(__dirname, "../public/employeeloginpage.html"));
+  });
+
+
+  app.get("/employee/dashboard", isAuthenticated, (req, res) => {
+    res.sendFile(path.join(__dirname, "../public/employeedashboard.html"));
+  });
+
+  // Route for logging user out
+  app.get("/logout", (req, res) => {
+    req.logout();
+    res.redirect("/");
   });
 
 

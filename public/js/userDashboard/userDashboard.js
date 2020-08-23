@@ -12,18 +12,16 @@ $(document).ready(() => {
         var date = $("#datepicker").val();
         var userUniqueId = $("#userUniqueId").val()
 
-        console.log(date)
+        console.log(typeof(date))
         console.log(userUniqueId)
-        $.post("/api/user/binOutRequest", {
-            requestDate: date,
-            userUniqueId:userUniqueId
+        $.post("/api/user/bin/request", {
+            date: date,
+            userId:userUniqueId
           })
             .then(() => {
-              window.location.replace("/userDashboard");
+              //window.location.replace("/user/dashboard");
               // If there's an error, log the error
             })
-            .catch(err => {
-              console.log(err);
-            });
+            
         })
 });

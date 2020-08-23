@@ -28,15 +28,15 @@ const exhpbs = require("express-handlebars");
 app.engine("handlebars",exhpbs({defaultLayout:"main"}));
 app.set("view engine","handlebars");
 
-
-
-
 // Requiring our routes
 
 require("./routes/html-routes.js")(app);
 require("./routes/usersignup-api-routes.js")(app);
 require("./routes/employeesignup-api-routes.js")(app);
 require("./routes/userDashboard-api-routes.js")(app);
+require("./routes/employeelogin-api-routes.js")(app)
+
+
 // Syncing our database and logging a message to the user upon success
 db.sequelize.sync().then(() => {
   app.listen(PORT, () => {

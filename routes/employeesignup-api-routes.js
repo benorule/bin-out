@@ -13,7 +13,9 @@ module.exports = function (app) {
       postcode: parseInt(req.body.postcode)
 
     };
-      db.Employee.create(employeeData).then((result) => {})
+      db.Employee.create(employeeData).then((result) => {
+        res.redirect("/employee/dashboard")
+      })
       .catch(err => {
         res.status(401).json(err);
       });
