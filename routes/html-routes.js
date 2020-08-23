@@ -36,9 +36,14 @@ module.exports = function (app) {
 
   //Routes to find all the users from database which will populate on the users table
   app.get("/admin/users", (req, res) => {
-    db.User.findAll().then(function (result) {
+    db.User.findAll({
+      where:{
+        approvedUser:false
+      }
+    }).then(function (result) {
 
         //Creating user objects to pass to handlebars
+
       let newUser = {
         user: result
       }
@@ -49,7 +54,11 @@ module.exports = function (app) {
 
   //Routes for getting all the employees from the database and populates on employee table
   app.get("/admin/employees", (req, res) => {
-    db.Employee.findAll().then(function (result) {
+    db.Employee.findAll({
+      where:{
+        approvedEmployee:false
+      }
+    }).then(function (result) {
 
       //Creating employee objects to pass to handlebars
       let newEmployee = {

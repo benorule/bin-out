@@ -19,9 +19,26 @@ module.exports = function (app) {
       });
   });
 
+  app.put("/api/user/update/approved/:id", (req, res) => {
+    console.log("inside user update request");
+    console.log(req.params.approvedUser)
+    db.User.update(
+      {approvedUser:true},
+      {
+        where:{
+          id:req.params.id
+        }
+      }
+      
+      ).then(function(results){
+     
+     
+    })
+    
+  });
+
   app.delete("/api/user/delete/:id", (req, res) => {
     console.log("inside user delete request");
-
     console.log(req.params.id)
     db.User.destroy({
       where:{

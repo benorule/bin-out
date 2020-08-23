@@ -23,17 +23,19 @@ module.exports = function (app) {
 
 
   // PUT route for updating Employee
-  app.put("/api/employee/update/:id", function(req, res) {
+  app.put("/api/employee/update/approved/:id", function(req, res) {
     // Add code here to update a post using the values in req.body, where the id is equal to
     // req.body.id and return the result to the user using res.json
-    db.Post.update({
+    db.Employee.update(
+      {approvedEmployee:true
      
     },{
       where:{
-        id:req.body.id
+        id:req.params.id
       }
     }).then(function(result){
-      res.json(result)
+      
+     
     })
   })
 

@@ -5,17 +5,18 @@ $(document).ready(() => {
         $(this).toggleClass('active');
     });
 
-    $("#acceptUser").on("click", function () {
+    $(".acceptUser").on("click", function () {
 
+        event.preventDefault()
         console.log("On accept user clicked")
+        let id= $(this).data("id")
 
-        $.ajax({
-            url: '/api/insert/userrequest',
-            type: 'POST',
-            success: function (result) {
-                // Do something with the result
-            }
-        });
+        $.ajax('/api/user/update/approved/' + id,{
+            type: "PUT",
+            
+        }).then(()=>{
+            location.reload();
+        })
     })
 
     $(".deleteUser").on("click", function () {
@@ -41,7 +42,7 @@ $(document).ready(() => {
        console.log(id)
        $.ajax({
         method: "PUT",
-        url: "/api/employee/update/" + id
+        url: "/api/employee/update/approved/" + id
       }).then(()=>{
            location.redirect("admin/employees");
         })
