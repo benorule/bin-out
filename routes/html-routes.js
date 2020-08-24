@@ -65,7 +65,6 @@ module.exports = function (app) {
     }).then(function (result) {
 
         //Creating user objects to pass to handlebars
-
       let newUser = {
         user: result
       }
