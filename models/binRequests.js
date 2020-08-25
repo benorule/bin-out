@@ -2,7 +2,7 @@
 module.exports = function(sequelize, DataTypes) {
   const BinRequest = sequelize.define("BinRequest", {
     date: {
-      type: DataTypes.DATE,
+      type: DataTypes.STRING,
       allowNull: true
     },
     completed: {

@@ -9,6 +9,7 @@
           <th scope="col">House Number</th>
           <th scope="col">Streetname</th>
           <th scope="col">Postcode</th>
+          <th scope="col">Phone Number</th>
           <th scope="col">Approve Signup</th>
           <th scope="col">Delete Signup</th>
         </tr>
@@ -23,6 +24,7 @@
           <td>{{dataValues.houseNumber}}</td>
           <td>{{dataValues.streetName}}</td>
           <td>{{dataValues.postcode}}</td>
+           <td>{{dataValues.phoneNumber}}</td>
 
           <td><a class="btn btn-primary acceptUser" href="/admin/users" role="button" data-id="{{dataValues.id}}">Accept</a></td>
           <td><a class="btn btn-primary deleteUser" href="/admin/users" role="button" data-id="{{dataValues.id}}">Delete</a></td>

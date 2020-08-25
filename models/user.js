@@ -23,6 +23,10 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.INTEGER,
       allowNull: false
     },
+    phoneNumber: {
+      type: DataTypes.BIGINT,
+      allowNull: false
+    },
     approvedUser: {
       type: DataTypes.BOOLEAN,
       allowNull: false,

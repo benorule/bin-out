@@ -6,6 +6,7 @@ $(document).ready(() => {
   const houseNumber = $("input#houseNumber");
   const streetName = $("input#streetName");
   const postcode = $("input#postcode");
+  const phoneNumber=$("input#phoneNumber")
 
   // When the signup button is clicked, we validate the email and password are not blank
   signUpForm.on("submit", event => {
@@ -16,10 +17,11 @@ $(document).ready(() => {
       unitNumber: unitNumber.val().trim(),
       houseNumber: houseNumber.val().trim(),
       streetName: streetName.val().trim(),
-      postcode: postcode.val().trim()
+      postcode: postcode.val().trim(),
+      phoneNumber:phoneNumber.val().trim()
     };
   
-    if (!userData.houseNumber || !userData.streetName || !userData.postcode) {
+    if (!userData.houseNumber || !userData.streetName || !userData.postcode ||!userData.phoneNumber) {
       return;
     }
    // If we have an email and password, run the signUpUser function
@@ -35,7 +37,7 @@ $(document).ready(() => {
     // $.post("/api/user/signup", {
     $.post("/api/user/signup", userData)
       .then(() => {
-        console.log("after .then")
+        console.log("after then")
          window.location.replace("/user/signup");
         // If there's an error, handle it by throwing up a bootstrap alert
       })
