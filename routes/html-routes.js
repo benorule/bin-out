@@ -4,7 +4,7 @@ const db = require("../models");
 
 // Requiring our custom middleware for checking if a user is logged in
 const isAuthenticated = require("../config/middleware/isAuthenticated")
-const isAdminAuthenticated = require("../config/middleware/isAdminAuthenticated");
+// const isAdminAuthenticated = require("../config/middleware/isAdminAuthenticated");
 
 module.exports = function (app) {
 
@@ -35,7 +35,7 @@ module.exports = function (app) {
   });
 
 
-  app.get("/employee/dashboard", isAuthenticated, (req, res) => {
+  app.get("/employee/dashboard",isAuthenticated, (req, res) => {
     res.sendFile(path.join(__dirname, "../public/employeedashboard.html"));
   });
 
@@ -59,12 +59,12 @@ module.exports = function (app) {
   });
 
   //Routes for admin dashboard which will populate users table initially
-  app.get("/admin/dashboard",isAdminAuthenticated, (req, res) => {
+  app.get("/admin/dashboard", (req, res) => {
     res.redirect("/admin/users");
   });
 
   //Routes to find all the users from database which will populate on the users table
-  app.get("/admin/users",isAdminAuthenticated, (req, res) => {
+  app.get("/admin/users", (req, res) => {
     db.User.findAll({
       where:{
         approvedUser:false
@@ -81,7 +81,7 @@ module.exports = function (app) {
 
 
   //Routes for getting all the employees from the database and populates on employee table
-  app.get("/admin/employees",isAdminAuthenticated, (req, res) => {
+  app.get("/admin/employees",  (req, res) => {
     db.Employee.findAll({
       where:{
         approvedEmployee:false

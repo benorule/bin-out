@@ -7,6 +7,7 @@ module.exports = function (app) {
   // If the user has valid login credentials, send them to the members page.
   // Otherwise the user will be sent an error
   app.post("/api/employee/login", passport.authenticate("local"), (req, res) => {
+      console.log("test");
     // Sending back a password, even a hashed password, isn't a good idea
     res.json({
       email: req.user.email,
@@ -30,8 +31,8 @@ module.exports = function (app) {
     }
   });
 
-  
-//Need to work here
+
+  //Need to work here
   // Route for getting all the request from user to emplyee front end
   //Join table and send informatin User fullName, unitNumber houseNumber,streetName, postcode only if approvedUser is true and Binrequest table has date and UserId
   app.get("/api/user/binrequest", (req, res) => {
@@ -41,7 +42,7 @@ module.exports = function (app) {
       attributes: ['UserId'],
       where: {
         //  date: {
-         //  [Op.ne]: ''
+        //  [Op.ne]: ''
         //  },
         completed: 0
       }
@@ -49,7 +50,7 @@ module.exports = function (app) {
       .then((result) => {
         result.forEach(element => {
           db.User.findAll({
-            attributes: ['fullName', 'unitNumber', 'houseNumber', 'streetName', 'postcode'],
+            attributes: ['id', 'fullName', 'unitNumber', 'houseNumber', 'streetName', 'postcode'],
             where: {
               id: element.dataValues.UserId
             }
@@ -65,5 +66,32 @@ module.exports = function (app) {
         });
       });
   });
-   
+
+  app.put("/api/:EmployeeId/binrequest/accepted/:id", (req, res) => {
+    db.BinRequest.update({
+      EmployeeId: req.params.EmployeeId
+    },
+      {
+        where: {
+          UserId: req.params.id
+        }
+      }).then((data) => {
+        res.json(data);
+
+      });
+  });
+
+  app.put("/api/employee/binrequest/completed/:id", (req, res) => {
+    db.BinRequest.update({
+      completed: 1
+    },
+      {
+        where: {
+          UserId: req.params.id
+        }
+      }).then((data) => {
+        res.json(data);
+
+      });
+   });
 }
