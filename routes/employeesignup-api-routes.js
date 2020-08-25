@@ -14,10 +14,11 @@ module.exports = function (app) {
 
     };
       db.Employee.create(employeeData).then((result) => {
-        res.redirect("/employee/dashboard")
+        res.send("Employee Created Successfully")
       })
       .catch(err => {
-        res.status(401).json(err);
+        res.send("Something went wrong try again later")
+       // res.status(401).json(err);
       });
     
 
