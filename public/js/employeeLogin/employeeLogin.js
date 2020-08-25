@@ -8,7 +8,7 @@ $(document).ready(() => {
   loginForm.on("submit", (event) => {
     event.preventDefault();
     console.log("on employee login button clicked")
-
+    
     const employeeData = {
       email: emailInput.val().trim(),
       password: passwordInput.val().trim()
