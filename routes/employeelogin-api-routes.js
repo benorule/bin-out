@@ -36,14 +36,34 @@ module.exports = function (app) {
   //Join table and send informatin User fullName, unitNumber houseNumber,streetName, postcode only if approvedUser is true and Binrequest table has date and UserId
   app.get("/api/user/binrequest", (req, res) => {
 
+    console.log("inside bin request api back")
     db.BinRequest.findAll({
-
-    }).then((result)=>{
-      console.log("find all bin request line 39")
-      console.log(result)
-      res.json(result)
-    
+      attributes: ['UserId'],
+      where: {
+        //  date: {
+         //  [Op.ne]: ''
+        //  },
+        completed: 0
+      }
     })
-   
+      .then((result) => {
+        result.forEach(element => {
+          db.User.findAll({
+            attributes: ['fullName', 'unitNumber', 'houseNumber', 'streetName', 'postcode'],
+            where: {
+              id: element.dataValues.UserId
+            }
+          })
+            .then((response) => {
+              var result2 = [];
+              response.forEach(element => {
+                result2.push(element.dataValues);
+              });
+              console.log(result2);
+              res.json(result2);
+            });
+        });
+      });
   });
-};
+   
+}

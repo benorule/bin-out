@@ -7,11 +7,27 @@ $(document).ready(() => {
   });
 
   $.get("/api/user/binrequest").then(result => {
-    console.log("inside bin request api")
+    console.log("inside bin request api front")
     console.log(result)
     for(var i= 0;i<result.legth;i++){
+      var user =result[i];
     var newRow = $("<div>")
-    var newColumn = $("<p>").text(result[0].id)
+    if(user.unitNumber !==0){
+      var newColumn = $("<p>").text(user.fullName
+        +" At address:"
+        +user.unitNumber+" "
+        +user.houseNumber+" "
+        +user.streetName+" "
+        +user.postcode);
+    }
+    else{
+      var newColumn = $("<p>").text(user.fullName
+        +" At address:"
+        +user.houseNumber+" "
+        +user.streetName+" "
+        +user.postcode);
+    }
+    
     var newButton = $("<button>");
     newButton.text("Accept Request")
     newRow.append(newColumn, newButton);
