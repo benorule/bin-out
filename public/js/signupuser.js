@@ -37,17 +37,15 @@ $(document).ready(() => {
     // $.post("/api/user/signup", {
     $.post("/api/user/signup", userData)
       .then(() => {
-        console.log("after then")
+        console.log("User signed up successfully wait for approve")
          window.location.replace("/user/signup");
         // If there's an error, handle it by throwing up a bootstrap alert
       })
-      .catch(handleLoginErr);
+      .catch(err=>{
+        console.log("Err something went wrong try again ")
+      });
   }
 
-  function handleLoginErr(err) {
-    $("#alert .msg").text(err.responseJSON);
-    $("#alert").fadeIn(500);
-  }
 
   function clearAll(){
     fullName.val("");

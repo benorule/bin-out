@@ -1,6 +1,6 @@
 $(document).ready(() => {
   // Getting references to our form and input
-  const signUpForm = $("form.signup");
+  const signUpForm = $("form.employeeSignup");
   const fullName = $("input#fullName");
   const email = $("input#email");
   const password = $("input#password");
@@ -10,6 +10,7 @@ $(document).ready(() => {
   // When the signup button is clicked, we validate the email and password are not blank
   signUpForm.on("submit", event => {
     event.preventDefault();
+    console.log("Inside employee signup")
     const employeeData = {
       fullName: fullName.val().trim(),
       email: email.val().trim(),
@@ -30,18 +31,15 @@ $(document).ready(() => {
   // Does a post to the signUpEmployee route. If successful, we are redirected to the signUpEmployee page
   // Otherwise we log any errors
   function signUpEmployee(employeeData) {
-    console.log("inside signupemployee")
+    console.log("inside signup employee")
     $.post("/api/employee/signup",employeeData)
-      .then(() => {
+      .then((response) => {
+        console.log("Employee Created Successfully")
         window.location.replace("/employee/signup");
-        // If there's an error, handle it by throwing up a bootstrap alert
-      })
-      .catch(handleLoginErr);
-  }
-
-  function handleLoginErr(err) {
-    $("#alert .msg").text(err.responseJSON);
-    $("#alert").fadeIn(500);
+       
+      }).catch(err=>{
+        console.log("Err something went wrong")
+      });
   }
 
   function clearAll(){
