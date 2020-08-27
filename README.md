@@ -16,6 +16,10 @@ Because of ageing I am having trouble to take bin out specially on the unsuitabl
 8. [VideoLink](#VideoLink)
 ## Installation
 The dependencies are [MySQL](https://www.npmjs.com/package/mysql) for database.
+[NEXMO](https://dashboard.nexmo.com/sign-in) for sending sms to the users.
+[HANDLEBARS](https://handlebarsjs.com/)for template engine.
+[EXPRESS](https://expressjs.com/) server for routing.
+[SEQUELIZE](https://sequelize.org/) for database ORM.
  Install the packages/dependencies by hitting following command on your terminal console:-
 ```
 npm install
@@ -31,7 +35,8 @@ I) Customer or user Enrollment
   * **house number**
   * **street name** 
   * **postcode** 
-  * **proof of address** 
+  * **phone Number** 
+
 Similarlly,
 II) Employee or helper Enrollment
 -Any one can become employee or helper if and only if they sign up with following information.
@@ -39,25 +44,27 @@ II) Employee or helper Enrollment
   * **email** - VARCHAR(30) to hold email address
   * **password** - VARCHAR(30) to hold password
   * **address** - VARCHAR(30) to hold full address 
-  * **proof of id** -  VARCHAR to hold proof of id
   
   III) Admin panel
   -Admin is responsible for verifying the data send during the sign up process from  user and employee.
   -They can reject the request or complete the request upon successfull verification.
-  -If User is successfully enrolled they get message back with unique User id
+  -If User is successfully enrolled they get message(sms) back on their provided phone number with unique User id
   otherwise with the unsuccessfull message.
-  -If Employee is scuccessfully enrolled they get notified too.
+  -If Employee is scuccessfully enrolled they will be able to login in their portal with provide username and password.
+
   * **Step 2:**
   I) Request From User :
-  -User will send request with their unique_id and date to take bin out just selecting date from calender and clicking on request helper button. 
+  -User will send request with their unique_id and date to take bin out just selecting date from calender and clicking on request button. 
+
   II)Admin will be Automatic controller.
   -Admin will receive the request, will search information in the database with the help of unique id of user.If it finds matching user goes next step otherwise sends message with "no customer found".
-  -If it finds matching user it will search employee who is helper from the same area (post code) and sends employee notification as todo task available with customer information.Otherwise admin will send message to user as no matching helper found try next time.
+
+  -If it finds matching user it will search employee and send all the details about user to the employee logged in portal.Otherwise admin will send message to user as no matching helper found try next time.
   
   III)Accept From Employee 
   -Once employee/helper see the notification on their page.
   -They will be able to click on request accepted button.
-  -Once they click the button the database table gets updated and sends the confirm message to use that they will be available on mention date.
+  -Once they click the button the database table gets updated that they have accepted to request.
   -The job will be appended on their list of task with progress.
   -Once the job is completed the employee can press job completed button so that record can be updated on the table.
   

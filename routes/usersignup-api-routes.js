@@ -2,10 +2,11 @@
 const db = require("../models");
 const Nexmo = require('nexmo')
 
+
 //protect keys
 const nexmo = new Nexmo({
-  apiKey: 'ebcc18d0',//NEXMO_API_KEY,
-  apiSecret: 'WT6L3auLSqU2yLuq'// NEXMO_API_SECRET
+  apiKey:process.env.NEXMO_API_KEY,
+  apiSecret: process.env.NEXMO_API_SECRET
 })
 
 module.exports = function (app) {
