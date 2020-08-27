@@ -1,4 +1,21 @@
+:root {
+  --color-one: #fffdf7;
+  --color-two: #b13333;
+  --color-three: #eee451;
+  --color-four: #89c281;
+  --color-five: #4c7d43;
+}
+
 form.signup,
 form.login {
   margin-top: 50px;
+}
+
+.topbar {
+  background-color: var(--color-two);
+  color: var(--color-one);
+}
+
+.page {
+  background-color: var(--color-four);
 }
