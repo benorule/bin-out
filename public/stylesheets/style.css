@@ -11,11 +11,10 @@ form.login {
   margin-top: 50px;
 }
 
-.topbar {
-  background-color: var(--color-two);
-  color: var(--color-one);
+.container-one {
+  background-color: var(--color-three);
 }
 
-.page {
+.container-two {
   background-color: var(--color-four);
 }
