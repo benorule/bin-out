@@ -1,4 +1,20 @@
+:root {
+  --color-one: #fffdf7;
+  --color-two: #b13333;
+  --color-three: #eee451;
+  --color-four: #89c281;
+  --color-five: #4c7d43;
+}
+
 form.signup,
 form.login {
   margin-top: 50px;
+}
+
+.container-one {
+  background-color: var(--color-three);
+}
+
+.container-two {
+  background-color: var(--color-four);
 }
