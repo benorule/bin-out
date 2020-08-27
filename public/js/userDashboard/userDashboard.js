@@ -14,7 +14,7 @@ $(document).ready(() => {
 
     console.log(typeof (date))
     console.log(userUniqueId)
-    $.post("/api/user/bin/request", {
+    $.post("/api/bin/request", {
       date: date,
       userId: userUniqueId
     })

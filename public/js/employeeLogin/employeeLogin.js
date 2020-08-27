@@ -1,7 +1,7 @@
 $(document).ready(() => {
 
   // Getting references to our form and inputs
-  const loginForm = $("form.login");
+  const loginForm = $("form.employeelogin");
   const emailInput = $("input#email-input");
   const passwordInput = $("input#password-input");
 
@@ -27,12 +27,15 @@ $(document).ready(() => {
 
   // loginUser does a post to our "api/login" route and if successful, redirects us the the members page
   function loginEmployee(employeeData) {
+    console.log("inside employee login api")
     $.post("/api/employee/login", employeeData)
       .then(() => {
+        console.log("success");
         window.location.replace("/employee/dashboard");
         // If there's an error, log the error
       })
       .catch(err => {
+        console.log("err");
         console.log(err);
       });
   }
