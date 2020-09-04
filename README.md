@@ -1,6 +1,10 @@
 ![License badge](https://img.shields.io/badge/license-MIT-green)
 # bin-out
 Bin-out is an application which helps people (specifically an old people) to take their bin out on the scheduled date.
+
+## Deployed Application
+https://bin-out.herokuapp.com/
+
 ## User Stories
 ```
 Because of ageing I am having trouble to take bin out specially on the unsuitable climates.I am looking for somone who can take my bin out upon my request on certain days.
