@@ -1,6 +1,9 @@
 ![License badge](https://img.shields.io/badge/license-MIT-green)
 # bin-out
 
+## Deployed Application
+https://bin-out.herokuapp.com/
+
 ## Description
 Bin-out is an application which allows users to submit a request for their bins to be taken out for collection when they are unable to. Once a request is sent, a local employee can choose to accept and fulfil the request. This application is useful for people who are unable to put their bins out, potentially due to being away from their property, having a physical condition or being elderly and unagile.
 
